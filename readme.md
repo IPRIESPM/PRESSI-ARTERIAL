@@ -21,7 +21,7 @@ El programa podrá leer los datos de estas formas:
 ### Valores válidos
 
 * los valores **nunca** podrán ser negativos.
-* los valores estarán comprendidos entre 3 y 22.
+* los valores estarán comprendidos entre 3 y 22 incluidos.
 * la sistòlica nunca podrá ser menor que la diastòlica (1 > 2).
 
 ### Registro da datos
