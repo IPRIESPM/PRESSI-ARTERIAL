@@ -37,7 +37,7 @@ La aplicación sólo finalizará cuando el usuario seleccione la opción de sali
 ## Opciones de menú
 
 * **[1]** **Pareja** con la **diastòlica máxima** y el **tipo de presión**[^1].
-* **[2]** **Pareja** con la **diastòlica maxima** y el **tipo de presión**[^1].
+* **[2]** **Pareja** con la **sistòlica maxima** y el **tipo de presión**[^1].
 * **[3]** Muestra la pareja con la tensión más compensada[^2] y el **tipo de presión**.
 * **[4]** Muestra una media de la tensiones. **Sin** el tipo de presión
 * **[5]** Sale del programa.
