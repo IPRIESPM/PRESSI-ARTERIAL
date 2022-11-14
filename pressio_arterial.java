@@ -133,9 +133,9 @@ public class pressio_arterial {
 
         // sistòlica mínima
         posició = 0;
-        sistolicaAux = 0;
+        sistolicaAux = 100;
         for (int i = 0; i < numeroMedidas; i++) {
-            if (sistolica[i] >= sistolicaAux) {
+            if (sistolica[i] <= sistolicaAux) {
                 sistolicaAux = sistolica[i];
                 posició = i;
             }
