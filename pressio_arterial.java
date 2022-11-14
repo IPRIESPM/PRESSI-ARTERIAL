@@ -96,7 +96,7 @@ public class pressio_arterial {
         // diastòlica máxima
         posició = 0;
         diastolicaAux = 0;
-        for (int i = 0; i < diastolica.length; i++) {
+        for (int i = 0; i < totalParelles; i++) {
             if (diastolica[i] >= diastolicaAux) {
                 diastolicaAux = diastolica[i];
                 posició = i;
@@ -108,33 +108,41 @@ public class pressio_arterial {
         // comprovant tipus de tensiò
 
         // optima
+        if ((diastolicaMaxima[1] >= 18 && diastolicaMaxima[0] >= 11)) {
+            diastolicaMaximaTipus = "Grau 3";
+        }
+        if ((diastolicaMaxima[1] >= 16 && diastolicaMaxima[1] <= 17.9)
+                && (diastolicaMaxima[0] >= 10.9 && diastolicaMaxima[0] <= 10)) {
+            diastolicaMaximaTipus = "Grau 2";
+        }
 
-        // if (diastolicaMaxima[1] >= 14 && diastolicaMaxima[0] < 9) {
-        // diastolicaMaximaTipus = "Sistòlica aïllada";
-        // } else if ((diastolicaMaxima[1] >= 18 && diastolicaMaxima[0] >= 11)) {
-        // diastolicaMaximaTipus = "Grau 3";
-        // } else if ((diastolicaMaxima[1] >= 16 && diastolicaMaxima[1] <= 17.9)
-        // && (diastolicaMaxima[0] >= 10.9 && diastolicaMaxima[0] <= 10)) {
-        // diastolicaMaximaTipus = "Grau 2";
-        // } else if ((diastolicaMaxima[1] >= 14 && diastolicaMaxima[1] >= 15.9)
-        // && (diastolicaMaxima[0] >= 9.9 && diastolicaMaxima[0] >= 9)) {
-        // diastolicaMaximaTipus = "Grau 1";
-        // } else if ((diastolicaMaxima[1] > 13 && diastolicaMaxima[1] < 13.9)
-        // && (diastolicaMaxima[0] >= 8.5 && diastolicaMaxima[0] <= 8.9)) {
-        // diastolicaMaximaTipus = "Normal - Alta";
-        // } else if ((diastolicaMaxima[1] >= 12 && diastolicaMaxima[1] <= 12.9)
-        // && (diastolicaMaxima[0] >= 8 && diastolicaMaxima[0] <= 8.4)) {
-        // diastolicaMaximaTipus = "Normal";
-        // } else if (diastolicaMaxima[1] >= 12 && diastolicaMaxima[0] < 8) {
-        // diastolicaMaximaTipus = "Optima";
-        // } else {
-        // diastolicaMaximaTipus = "Desconegut";
-        // }
+        if (diastolicaMaxima[1] >= 14 && diastolicaMaxima[0] < 9) {
+            diastolicaMaximaTipus = "Sistòlica aïllada";
+        }
+
+        if ((diastolicaMaxima[1] >= 14 && diastolicaMaxima[1] >= 15.9)
+                && (diastolicaMaxima[0] >= 9.9 && diastolicaMaxima[0] >= 9)) {
+            diastolicaMaximaTipus = "Grau 1";
+        }
+
+        if ((diastolicaMaxima[1] > 13 && diastolicaMaxima[1] < 13.9)
+                && (diastolicaMaxima[0] >= 8.5 && diastolicaMaxima[0] <= 8.9)) {
+            diastolicaMaximaTipus = "Normal - Alta";
+        }
+
+        if ((diastolicaMaxima[1] >= 12 && diastolicaMaxima[1] <= 12.9)
+                && (diastolicaMaxima[0] >= 8 && diastolicaMaxima[0] <= 8.4)) {
+            diastolicaMaximaTipus = "Normal";
+        }
+
+        if (diastolicaMaxima[1] >= 12 && diastolicaMaxima[0] < 8) {
+            diastolicaMaximaTipus = "Optima";
+        }
 
         // sistòlica mínima
         posició = 0;
         sistolicaAux = 100;
-        for (int i = 0; i < numeroMedidas; i++) {
+        for (int i = 0; i < totalParelles; i++) {
             if (sistolica[i] <= sistolicaAux) {
                 sistolicaAux = sistolica[i];
                 posició = i;
@@ -168,8 +176,9 @@ public class pressio_arterial {
         // més compensada
         posició = 0;
         compensadaAux = 100;
-        for (int i = 0; i < numeroMedidas; i++) {
-            int operacio = sistolica[i] - diastolica[i];
+        for (int i = 0; i < totalParelles; i++) {
+            int operacio = diastolica[i] - sistolica[i];
+            System.out.println("operacio: " + operacio);
             if (operacio <= compensadaAux) {
                 compensadaAux = operacio;
                 posició = i;
@@ -203,7 +212,7 @@ public class pressio_arterial {
         // tensió mitjana
         sistolicaAux = 0;
         diastolicaAux = 0;
-        for (int i = 0; i < numeroMedidas; i++) {
+        for (int i = 0; i < totalParelles; i++) {
             sistolicaAux += sistolica[i];
             diastolicaAux += diastolica[i];
         }
