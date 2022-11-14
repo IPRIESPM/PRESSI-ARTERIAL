@@ -122,7 +122,7 @@ public class pressio_arterial {
         } else if (sistolicaMaxima[0] >= 18 && sistolicaMaxima[1] >= 11) {
             sistolicaMaximaTipus = "Grave 3";
         } else if (sistolicaMaxima[0] >= 14 && sistolicaMaxima[1] < 9) {
-            sistolicaMaximaTipus = "Sistólica aislada";
+            sistolicaMaximaTipus = "Sistòlica aislada";
         } else {
             sistolicaMaximaTipus = "Desconegut";
         }
@@ -160,7 +160,7 @@ public class pressio_arterial {
         } else if (diastolicaMaxima[0] >= 18 && diastolicaMaxima[1] >= 11) {
             diastolicaMaximaTipus = "Grave 3";
         } else if (diastolicaMaxima[0] >= 14 && diastolicaMaxima[1] < 9) {
-            diastolicaMaximaTipus = "Sistólica aislada";
+            diastolicaMaximaTipus = "Sistòlica aislada";
         } else {
             diastolicaMaximaTipus = "Desconegut";
         }
