@@ -39,7 +39,7 @@ public class pressio_arterial {
 
         boolean semafor = false;
 
-        final boolean dev = true;
+        final boolean dev = false;
 
         System.out.println("Benvingut al programa de pressió arterial");
         System.out.println("----------------------------------------");
@@ -105,39 +105,31 @@ public class pressio_arterial {
         diastolicaMaxima[0] = diastolica[posició];
         diastolicaMaxima[1] = sistolica[posició];
 
+        if (sistolicaMaxima[1] < 12 && sistolicaMaxima[0] < 8) {
+            sistolicaMaximaTipus = "Sistòlica aïllada";
+        } else if (sistolicaMaxima[1] >= 12 && sistolicaMaxima[1] <= 12.9 && sistolicaMaxima[0] >= 8
+                && sistolicaMaxima[0] <= 8.4) {
+            sistolicaMaximaTipus = "Normal";
+        } else if (sistolicaMaxima[1] >= 13 && sistolicaMaxima[1] <= 13.9 && sistolicaMaxima[0] >= 8.5
+                && sistolicaMaxima[0] <= 8.9) {
+            sistolicaMaximaTipus = "Normal-Alta";
+        } else if (sistolicaMaxima[1] >= 14 && sistolicaMaxima[1] <= 15.9 && sistolicaMaxima[0] >= 9
+                && sistolicaMaxima[0] <= 9.9) {
+            sistolicaMaximaTipus = "Grave 1";
+        } else if (sistolicaMaxima[1] >= 16 && sistolicaMaxima[1] <= 17.9 && sistolicaMaxima[0] >= 10
+                && sistolicaMaxima[0] <= 10.9) {
+            sistolicaMaximaTipus = "Grave 2";
+        } else if (sistolicaMaxima[0] >= 18 && sistolicaMaxima[1] >= 11) {
+            sistolicaMaximaTipus = "Grave 3";
+        } else if (sistolicaMaxima[0] >= 14 && sistolicaMaxima[1] < 9) {
+            sistolicaMaximaTipus = "Sistólica aislada";
+        } else {
+            sistolicaMaximaTipus = "Desconegut";
+        }
+
         // comprovant tipus de tensiò
 
         // optima
-        if ((diastolicaMaxima[1] >= 18 && diastolicaMaxima[0] >= 11)) {
-            diastolicaMaximaTipus = "Grau 3";
-        }
-        if ((diastolicaMaxima[1] >= 16 && diastolicaMaxima[1] <= 17.9)
-                && (diastolicaMaxima[0] >= 10.9 && diastolicaMaxima[0] <= 10)) {
-            diastolicaMaximaTipus = "Grau 2";
-        }
-
-        if (diastolicaMaxima[1] >= 14 && diastolicaMaxima[0] < 9) {
-            diastolicaMaximaTipus = "Sistòlica aïllada";
-        }
-
-        if ((diastolicaMaxima[1] >= 14 && diastolicaMaxima[1] >= 15.9)
-                && (diastolicaMaxima[0] >= 9.9 && diastolicaMaxima[0] >= 9)) {
-            diastolicaMaximaTipus = "Grau 1";
-        }
-
-        if ((diastolicaMaxima[1] > 13 && diastolicaMaxima[1] < 13.9)
-                && (diastolicaMaxima[0] >= 8.5 && diastolicaMaxima[0] <= 8.9)) {
-            diastolicaMaximaTipus = "Normal - Alta";
-        }
-
-        if ((diastolicaMaxima[1] >= 12 && diastolicaMaxima[1] <= 12.9)
-                && (diastolicaMaxima[0] >= 8 && diastolicaMaxima[0] <= 8.4)) {
-            diastolicaMaximaTipus = "Normal";
-        }
-
-        if (diastolicaMaxima[1] >= 12 && diastolicaMaxima[0] < 8) {
-            diastolicaMaximaTipus = "Optima";
-        }
 
         // sistòlica mínima
         posició = 0;
@@ -151,34 +143,33 @@ public class pressio_arterial {
         sistolicaMaxima[0] = diastolica[posició];
         sistolicaMaxima[1] = sistolica[posició];
 
-        // if (sistolicaMaxima[1] >= 14 && sistolicaMaxima[0] < 9) {
-        // sistolicaMaximaTipus = "Sistòlica aïllada";
-        // } else if ((sistolicaMaxima[1] >= 18 && sistolicaMaxima[0] >= 11)) {
-        // sistolicaMaximaTipus = "Grau 3";
-        // } else if ((sistolicaMaxima[1] >= 16 && sistolicaMaxima[1] <= 17.9)
-        // && (sistolicaMaxima[0] >= 10.9 && sistolicaMaxima[0] <= 10)) {
-        // sistolicaMaximaTipus = "Grau 2";
-        // } else if ((sistolicaMaxima[1] >= 14 && sistolicaMaxima[1] >= 15.9)
-        // && (sistolicaMaxima[0] >= 9.9 && sistolicaMaxima[0] >= 9)) {
-        // sistolicaMaximaTipus = "Grau 1";
-        // } else if ((sistolicaMaxima[1] > 13 && sistolicaMaxima[1] < 13.9)
-        // && (sistolicaMaxima[0] >= 8.5 && sistolicaMaxima[0] <= 8.9)) {
-        // sistolicaMaximaTipus = "Normal - Alta";
-        // } else if ((sistolicaMaxima[1] >= 12 && sistolicaMaxima[1] <= 12.9)
-        // && (sistolicaMaxima[0] >= 8 && sistolicaMaxima[0] <= 8.4)) {
-        // sistolicaMaximaTipus = "Normal";
-        // } else if (sistolicaMaxima[1] >= 12 && sistolicaMaxima[0] < 8) {
-        // sistolicaMaximaTipus = "Optima";
-        // } else {
-        // sistolicaMaximaTipus = "Desconegut";
-        // }
+        if (diastolicaMaxima[1] < 12 && diastolicaMaxima[0] < 8) {
+            diastolicaMaximaTipus = "Sistòlica aïllada";
+        } else if (diastolicaMaxima[1] >= 12 && diastolicaMaxima[1] <= 12.9 && diastolicaMaxima[0] >= 8
+                && diastolicaMaxima[0] <= 8.4) {
+            diastolicaMaximaTipus = "Normal";
+        } else if (diastolicaMaxima[1] >= 13 && diastolicaMaxima[1] <= 13.9 && diastolicaMaxima[0] >= 8.5
+                && diastolicaMaxima[0] <= 8.9) {
+            diastolicaMaximaTipus = "Normal-Alta";
+        } else if (diastolicaMaxima[1] >= 14 && diastolicaMaxima[1] <= 15.9 && diastolicaMaxima[0] >= 9
+                && diastolicaMaxima[0] <= 9.9) {
+            diastolicaMaximaTipus = "Grave 1";
+        } else if (diastolicaMaxima[1] >= 16 && diastolicaMaxima[1] <= 17.9 && diastolicaMaxima[0] >= 10
+                && diastolicaMaxima[0] <= 10.9) {
+            diastolicaMaximaTipus = "Grave 2";
+        } else if (diastolicaMaxima[0] >= 18 && diastolicaMaxima[1] >= 11) {
+            diastolicaMaximaTipus = "Grave 3";
+        } else if (diastolicaMaxima[0] >= 14 && diastolicaMaxima[1] < 9) {
+            diastolicaMaximaTipus = "Sistólica aislada";
+        } else {
+            diastolicaMaximaTipus = "Desconegut";
+        }
 
         // més compensada
         posició = 0;
         compensadaAux = 100;
         for (int i = 0; i < totalParelles; i++) {
             int operacio = diastolica[i] - sistolica[i];
-            System.out.println("operacio: " + operacio);
             if (operacio <= compensadaAux) {
                 compensadaAux = operacio;
                 posició = i;
@@ -187,27 +178,27 @@ public class pressio_arterial {
         compensada[0] = diastolica[posició];
         compensada[1] = sistolica[posició];
 
-        // if (compensada[1] >= 14 && compensada[0] < 9) {
-        // compensadaTipus = "Sistòlica aïllada";
-        // } else if ((compensada[1] >= 18 && compensada[0] >= 11)) {
-        // compensadaTipus = "Grau 3";
-        // } else if ((compensada[1] >= 16 && compensada[1] <= 17.9)
-        // && (compensada[0] >= 10.9 && compensada[0] <= 10)) {
-        // compensadaTipus = "Grau 2";
-        // } else if ((compensada[1] >= 14 && compensada[1] >= 15.9)
-        // && (compensada[0] >= 9.9 && compensada[0] >= 9)) {
-        // compensadaTipus = "Grau 1";
-        // } else if ((compensada[1] > 13 && compensada[1] < 13.9)
-        // && (compensada[0] >= 8.5 && compensada[0] <= 8.9)) {
-        // compensadaTipus = "Normal - Alta";
-        // } else if ((compensada[1] >= 12 && compensada[1] <= 12.9)
-        // && (compensada[0] >= 8 && compensada[0] <= 8.4)) {
-        // compensadaTipus = "Normal";
-        // } else if (compensada[1] >= 12 && compensada[0] < 8) {
-        // compensadaTipus = "Optima";
-        // } else {
-        // compensadaTipus = "Desconegut";
-        // }
+        if (compensada[1] < 12 && compensada[0] < 8) {
+            compensadaTipus = "Sistòlica aïllada";
+        } else if (compensada[1] >= 12 && compensada[1] <= 12.9 && compensada[0] >= 8
+                && compensada[0] <= 8.4) {
+            compensadaTipus = "Normal";
+        } else if (compensada[1] >= 13 && compensada[1] <= 13.9 && compensada[0] >= 8.5
+                && compensada[0] <= 8.9) {
+            compensadaTipus = "Normal-Alta";
+        } else if (compensada[1] >= 14 && compensada[1] <= 15.9 && compensada[0] >= 9
+                && compensada[0] <= 9.9) {
+            compensadaTipus = "Grave 1";
+        } else if (compensada[1] >= 16 && compensada[1] <= 17.9 && compensada[0] >= 10
+                && compensada[0] <= 10.9) {
+            compensadaTipus = "Grave 2";
+        } else if (compensada[0] >= 18 && compensada[1] >= 11) {
+            compensadaTipus = "Grave 3";
+        } else if (compensada[0] >= 14 && compensada[1] < 9) {
+            compensadaTipus = "Sistòlica aislada";
+        } else {
+            compensadaTipus = "Desconegut";
+        }
 
         // tensió mitjana
         sistolicaAux = 0;
